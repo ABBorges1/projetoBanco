@@ -71,6 +71,6 @@ public class Documento {
     }
 
     public static void main(String[] args) {
-        Documento doc = new Documento("123.456.789-09");
+        Documento doc = new Documento("");
     }
 }
