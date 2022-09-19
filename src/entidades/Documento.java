@@ -6,7 +6,15 @@ public class Documento {
     private String cnh;
 
     public Documento(String cpf) {
-        this.validaCpf(cpf);               //atributo obrigatório
+        if (validaCpf(cpf)){
+            System.out.println("CPF VÁLIDO!");
+            setCpf(cpf);
+        }else{
+            System.out.println("CPF INVÁLIDO!");
+            System.exit(-1);
+        }
+
+        //this.validaCpf(cpf);               //atributo obrigatório
     }
 
     public String getCpf() {
@@ -27,50 +35,45 @@ public class Documento {
     public void setCnh(String cnh) {
         this.cnh = cnh;
     }
-
+    private Boolean calculaCPF(String cpf, int posicao){
+        int dv = Character.getNumericValue(cpf.charAt(posicao));         //converte de char para int
+        int soma=0;
+        for (int i = 0; i < cpf.length()-(11-posicao); i++){
+            int digito = Character.getNumericValue(cpf.charAt(i));
+            soma = soma+digito*((posicao+1)-i);
+        }
+        int resto = soma%11;
+        if ((resto < 2)&&(dv!=0)){
+            return false;
+        }else if((resto >= 2)&&(dv!=(11-resto))){
+            return false;
+        }
+        return true;
+    }
     private Boolean validaCpf(String cpf){
         cpf = cpf.replace(".", "");     //Substitui . por string vazia
         cpf = cpf.replace("-", "");     //Subtitui - por string vazia
-        int soma = 0;
-        int dv1 = Character.getNumericValue(cpf.charAt(9));         //converte de char para int
-        int dv2 = Character.getNumericValue(cpf.charAt(10));        //converte de char para int
-        for (int i = 0; i < cpf.length()-2; i++) {
-            //converte de char para int
-            int digito = Character.getNumericValue(cpf.charAt(i));
-            soma = soma+digito*(10-i);
+        int primeiro = Character.getNumericValue(cpf.charAt(0));
+        int indice = 0;
+        for(int i=1; i < cpf.length();i++){
+            indice = Character.getNumericValue(cpf.charAt(i));
+            if(primeiro!=indice){
+                break;
+            }else if(i==11){
+                return false;
+            }
         }
-        int resto = soma%11;
-        if ((resto < 2)&&(dv1!=0)){
-            System.out.println("Erro no primeiro digito verificador");
-            System.out.println("\nCorreto deveria ser 0");
-            return false;
-        }else if((resto >= 2)&&(dv1!=(11-resto))){
-            System.out.println("Erro no primeiro digito verificador");
-            System.out.println("\nCorreto deveria ser "+(11-resto));
-            return false;
-        }
-
-        // vamos verificar o dv2
-        soma=0;
-        for (int i = 0; i < cpf.length()-1; i++){
-            int digito = Character.getNumericValue(cpf.charAt(i));
-            soma = soma+digito*(11-i);
-        }
-        resto = soma%11;
-        if ((resto < 2)&&(dv2!=0)){
-            System.out.println("Erro no primeiro digito verificador");
-            System.out.println("\nCorreto deveria ser 0");
-            return false;
-        }else if((resto >= 2)&&(dv2!=(11-resto))){
-            System.out.println("Erro no primeiro digito verificador");
-            System.out.println("\nCorreto deveria ser "+(11-resto));
-            return false;
-        }
-        System.out.println("CPF ESTA CORRETO");
-        return true;        
+        return (calculaCPF(cpf, 9)&&(calculaCPF(cpf, 10)));        
     }
 
-    public static void main(String[] args) {
-        Documento doc = new Documento("");
+    // public static void main(String[] args) {
+    //     Documento doc = new Documento("111.121.111-11");
+
+    //     System.out.println(doc.getCpf());
+    // }
+
+    @Override
+    public String toString(){
+        return "\nCPF: "+getCpf()+ "\nRG: "+getRg()+"\nCNH: "+getCnh();
     }
 }

@@ -86,7 +86,12 @@ public class Endereco {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
-    } 
+    }
+
+    @Override
+    public String toString(){
+        return "\nCEP: "+getCep()+ "\nRUA: "+getNome()+"\nNº: "+getNumero();
+    }
     
     
 }

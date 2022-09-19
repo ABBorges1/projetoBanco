@@ -24,4 +24,9 @@ public class Contato {
         this.celular = celular;
     }
 
+    @Override
+    public String toString(){
+        return "\nCelular: "+getCelular();
+    }
+
 }
