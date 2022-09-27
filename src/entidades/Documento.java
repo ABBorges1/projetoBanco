@@ -74,6 +74,12 @@ public class Documento {
 
     @Override
     public String toString(){
-        return "\nCPF: "+getCpf()+ "\nRG: "+getRg()+"\nCNH: "+getCnh();
+        return "\"documeto\": { \"cnh\": \""+getCnh()+"\""+", "+"\"cpf\": \""+getCpf()+"\""+", "+"\"rg\": \""+getRg()+"\""+"}, "
+        ;
     }
 }
+
+//     //       "documento": {
+//     //         "cnh": "123456789",
+//     //         "cpf": "111.444.777-35",
+//     //         "rg": "10.258.452-9"

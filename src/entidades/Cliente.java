@@ -1,61 +1,35 @@
 package entidades;
 
-import java.time.LocalDate;
+//  extends fala que a classe Cliente é uma PessoaFisica, ou seja, ela herda todos os atibutos da classe PessoaFisica
 
-public class Cliente {
-    private String nome;
-    private Documento documento;
-    private Endereco endereco;
-    private Contato contato;
-    private LocalDate dataNascimento;
+public class Cliente extends PessoaFisica {
+    private int scoreCredito;
 
-    public Cliente(String cpf){
-        this.documento = new Documento(cpf);
-        this.endereco = new Endereco(null);
-        setContato(new Contato());
+    public Cliente(String cpf) {
+        super(cpf);
     }
 
-    public String getNome() {
-        return nome;
+    public int getScoreCredito() {
+        return scoreCredito;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setScoreCredito(int scoreCredito) {
+        this.scoreCredito = scoreCredito;
     }
 
-    public Documento getDocumento() {
-        return documento;
+    public String toString() {
+        return "{ \"cliente\": { " + super.toString() + ",\"score\": " + "\"" + getScoreCredito() + "\", "
+                + "\"success\": true, \"message\": \"Dados exibidos com sucesso\"} }";
     }
-
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Contato getContato() {
-        return contato;
-    }
-
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    @Override
-    public String toString(){
-        return "\nNome\n"+getNome()+ "\n\nDocumento"+getDocumento()+"\n\nEndereço"+getEndereco()+"\n\nContato"+getContato();
-    }
-
-    
 }
+
+// +"\nScore "+getScoreCredito()
+// {
+// "cliente": {
+// "nome": "João Miguel",
+// "dataNascimento": "2001-02-04",
+// "documento": {
+// "cnh": "123456789",
+// "cpf": "111.444.777-35",
+// "rg": "10.258.452-9"
+// },

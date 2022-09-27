@@ -26,7 +26,7 @@ public class Contato {
 
     @Override
     public String toString(){
-        return "\nCelular: "+getCelular();
+        return "\"contato\": { \"email\": "+"\""+getEmail()+"\""+", "+"\"fixo\": "+"\""+getFixo()+"\""+", "+"\"celular\": "+"\""+getCelular()+"\""+"}";
     }
 
 }

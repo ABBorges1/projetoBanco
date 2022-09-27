@@ -90,7 +90,8 @@ public class Endereco {
 
     @Override
     public String toString(){
-        return "\nCEP: "+getCep()+ "\nRUA: "+getNome()+"\nNº: "+getNumero();
+        return "\"endereco\": {\"bairro\": "+"\""+getBairro()+"\""+", "+"\"cep\": "+"\""+getCep()+"\""+", "+"\"cidade\": "+"\""+getCidade()+"\""+", "+"\"logradouro\": "+"\""+getLogradouro()+"\""+", "+"\"nome\": "+"\""+getNome()+"\""+", "+"\"numero\": "+"\""+getNumero()+"\""+", "+"\"uf\": "+"\""+getUf()+"\""+"}, "
+        ;
     }
     
     

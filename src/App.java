@@ -1,25 +1,21 @@
 import entidades.Cliente;
-import entidades.Endereco;
+import entidades.Funcionario;
+import entidades.PessoaFisica;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Cliente obj1 = new Cliente("111.111.111-11");
+        // Cliente cliente = new Cliente("");
+        // Funcionario funcionario = new Funcionario("");
 
-        obj1.getDocumento().setRg("");
-        obj1.getDocumento().setCnh("");
-        
-        // definir os valores correspondente ao endereço, contato e nome de uma cliente
+        // cliente.setNome("Astolfo");
+        // funcionario.setNome("Joilsom");
 
-        //ENDEREÇO
-        obj1.getEndereco().setCep("");
-        obj1.getEndereco().setNome("");
-        obj1.getEndereco().setNumero("");
+        // info(cliente);
+        // System.out.println("\n");
+        // info(funcionario);
+    }
 
-        //CONTATO 
-        obj1.getContato().setCelular("");
-        
-
-        System.out.println(obj1);
-
+    public static void info(PessoaFisica pf){
+        System.out.println(pf.toString());
     }
 }
